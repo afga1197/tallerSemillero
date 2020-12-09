@@ -4,12 +4,12 @@ import com.clearminds.AFGA.dtos.Estudiante;
 import com.clearminds.AFGA.excepciones.BDDException;
 import com.clearminds.AFGA.servicios.ServicioEstudiante;
 
-public class TestServicio {
+public class TestService2 {
 
 	public static void main(String[] args) {
 		ServicioEstudiante servicioEstudiante = new ServicioEstudiante();
 		try {
-			servicioEstudiante.insertarEstudiante(new Estudiante("Marco", "Chavez"));
+			servicioEstudiante.actualizarEstudiante(new Estudiante("Juanes", "Perez", 3));
 		} catch (BDDException e) {
 			e.printStackTrace();
 			e.getMessage();

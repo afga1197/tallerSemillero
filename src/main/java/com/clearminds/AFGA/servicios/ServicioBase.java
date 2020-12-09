@@ -8,7 +8,7 @@ import com.clearminds.AFGA.excepciones.BDDException;
 
 public class ServicioBase {
 
-	private Connection conexion;
+	public static Connection conexion;
 
 	public void abrirConexion() throws BDDException {
 		conexion = ConexionBDD.obtenerConexion();

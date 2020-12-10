@@ -2,6 +2,9 @@ package com.clearminds.AFGA.servicios;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+
+import com.clearminds.AFGA.bdd.DateUtil;
 import com.clearminds.AFGA.dtos.Estudiante;
 import com.clearminds.AFGA.excepciones.BDDException;
 
@@ -13,11 +16,11 @@ public class ServicioEstudiante extends ServicioBase {
 		Statement stmt = null;
 		String sql = "";
 		if(estudiante.getEdad()==null){	
-			sql = "INSERT INTO estudiantes (nombre, apellido) VALUES('" + estudiante.getNombre() + "','"
-					+ estudiante.getApellido() + "')";
+			sql = "INSERT INTO estudiantes (nombre, apellido, fecha_modificacion) VALUES('"+estudiante.getNombre()+"', '"
+					+ estudiante.getApellido() +"', '"+DateUtil.convertirFecha()+"')";
 		} else{
-			sql = "INSERT INTO estudiantes (nombre, apellido, edad) VALUES('" + estudiante.getNombre() + "','"
-					+ estudiante.getApellido()+ "','" +estudiante.getEdad() + "')";
+			sql = "INSERT INTO estudiantes (nombre, apellido, edad, fecha_modificacion) VALUES('" + estudiante.getNombre() + "','"
+					+ estudiante.getApellido()+ "','" +estudiante.getEdad()+"', '"+DateUtil.convertirFecha()+"')";
 		}
 		try {
 			stmt = conexion.createStatement();
@@ -37,9 +40,9 @@ public class ServicioEstudiante extends ServicioBase {
 		Statement stmt = null;
 		String sql = "";
 		if(estudiante.getEdad()==null){	
-			sql = "UPDATE estudiantes SET nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"' WHERE id='"+estudiante.getId()+"'";
+			sql = "UPDATE estudiantes SET nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"', fecha_modificacion='"+DateUtil.convertirFecha()+"' WHERE id='"+estudiante.getId()+"'";
 		} else{
-			sql = "UPDATE estudiantes SET nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"', edad='"+estudiante.getEdad()+"' WHERE id='"+estudiante.getId()+"'";
+			sql = "UPDATE estudiantes SET nombre='"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"', edad='"+estudiante.getEdad()+"', fecha_modificacion='"+DateUtil.convertirFecha()+"' WHERE id='"+estudiante.getId()+"'";
 		}
 		try {
 			stmt = conexion.createStatement();
